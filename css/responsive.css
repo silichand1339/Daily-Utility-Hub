@@ -243,6 +243,35 @@
         text-align:center;
 
     }
+    .nav-links{
+
+    position:absolute;
+
+    top:72px;
+
+    left:0;
+
+    width:100%;
+
+    background:var(--white);
+
+    flex-direction:column;
+
+    gap:20px;
+
+    padding:30px;
+
+    display:none;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.nav-links.active{
+
+    display:flex;
+
+}
 
 }
 

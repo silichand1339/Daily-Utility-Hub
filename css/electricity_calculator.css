@@ -1,0 +1,1807 @@
+/*==========================================================
+    ELECTRICITY BILL CALCULATOR
+    PART 2A
+    Hero + Layout + Cards
+==========================================================*/
+
+/*==========================================================
+    PAGE
+==========================================================*/
+
+body{
+    background: var(--background);
+}
+
+
+/*==========================================================
+    HERO SECTION
+==========================================================*/
+
+.tool-hero{
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 90px 0 70px;
+
+    text-align: center;
+
+}
+
+.tool-hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    background:rgba(161,188,152,.18);
+
+    border-radius:50%;
+
+    top:-180px;
+
+    left:-120px;
+
+    filter:blur(10px);
+
+}
+
+.tool-hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+
+    height:350px;
+
+    background:rgba(220,207,192,.25);
+
+    border-radius:50%;
+
+    right:-100px;
+
+    bottom:-120px;
+
+}
+
+.tool-hero .container{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.tool-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    background:rgba(119,136,115,.12);
+
+    color:var(--primary);
+
+    border-radius:999px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    margin-bottom:28px;
+
+}
+
+.tool-badge i{
+
+    font-size:18px;
+
+}
+
+.tool-hero h1{
+
+    font-size:56px;
+
+    line-height:1.15;
+
+    margin-bottom:18px;
+
+    color:var(--text);
+
+}
+
+.tool-hero p{
+
+    max-width:760px;
+
+    margin:auto;
+
+    color:var(--text-light);
+
+    font-size:18px;
+
+    line-height:1.9;
+
+}
+
+
+/*==========================================================
+    CALCULATOR SECTION
+==========================================================*/
+
+.calculator-section{
+
+    padding:80px 0 100px;
+
+}
+
+.calculator-wrapper{
+
+    display:grid;
+
+    grid-template-columns:460px 1fr;
+
+    gap:40px;
+
+    align-items:start;
+
+}
+
+
+/*==========================================================
+    CARD DESIGN
+==========================================================*/
+
+.calculator-card,
+.result-card{
+
+    position:relative;
+
+    background:var(--white);
+
+    border-radius:26px;
+
+    padding:35px;
+
+    border:1px solid rgba(119,136,115,.08);
+
+    box-shadow:0 15px 45px rgba(0,0,0,.05);
+
+    transition:all .35s ease;
+
+}
+
+.calculator-card:hover,
+.result-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.08);
+
+}
+
+
+/*==========================================================
+    TOP ACCENT
+==========================================================*/
+
+.calculator-card::before,
+.result-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:6px;
+
+    border-radius:26px 26px 0 0;
+
+    background:linear-gradient(
+        90deg,
+        #778873,
+        #A1BC98
+    );
+
+}
+
+
+/*==========================================================
+    CARD HEADER
+==========================================================*/
+
+.card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:35px;
+
+}
+
+.card-header i{
+
+    width:56px;
+
+    height:56px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:18px;
+
+    background:rgba(119,136,115,.12);
+
+    color:var(--primary);
+
+    font-size:22px;
+
+}
+
+.card-header h2{
+
+    font-size:28px;
+
+    color:var(--text);
+
+}
+
+
+/*==========================================================
+    RESULT CARD
+==========================================================*/
+
+.result-card{
+
+    position:sticky;
+
+    top:110px;
+
+    min-height:680px;
+
+}
+
+
+/*==========================================================
+    RESULT BODY
+==========================================================*/
+
+.result-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+}
+
+
+/*==========================================================
+    EMPTY STATE
+==========================================================*/
+
+.empty-state{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:80px 25px;
+
+}
+
+.empty-state i{
+
+    width:90px;
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:rgba(119,136,115,.10);
+
+    color:var(--primary);
+
+    font-size:36px;
+
+    margin-bottom:28px;
+
+}
+
+.empty-state h3{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+}
+
+.empty-state p{
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+    max-width:320px;
+
+}
+
+
+/*==========================================================
+    DECORATIVE SHAPES
+==========================================================*/
+
+.calculator-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    background:rgba(161,188,152,.10);
+
+    border-radius:50%;
+
+    right:-80px;
+
+    bottom:-80px;
+
+    filter:blur(12px);
+
+    pointer-events:none;
+
+}
+
+.result-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+
+    height:160px;
+
+    background:rgba(220,207,192,.18);
+
+    border-radius:50%;
+
+    left:-70px;
+
+    top:-70px;
+
+    filter:blur(12px);
+
+    pointer-events:none;
+
+}
+
+
+/*==========================================================
+    ENTRANCE ANIMATION
+==========================================================*/
+
+.calculator-card{
+
+    animation:slideLeft .7s ease;
+
+}
+
+.result-card{
+
+    animation:slideRight .7s ease;
+
+}
+
+@keyframes slideLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes slideRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+
+/*==========================================================
+    FORM
+==========================================================*/
+
+#billForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+
+/*==========================================================
+    FORM GROUP
+==========================================================*/
+
+.form-group{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.form-group label span{
+
+    font-size:13px;
+
+    font-weight:500;
+
+    color:var(--text-light);
+
+}
+
+
+/*==========================================================
+    INPUT
+==========================================================*/
+
+.form-group input{
+
+    width:100%;
+
+    height:58px;
+
+    padding:0 18px;
+
+    border:2px solid transparent;
+
+    border-radius:16px;
+
+    background:#FAF8F4;
+
+    font-size:16px;
+
+    color:var(--text);
+
+    transition:all .30s ease;
+
+}
+
+.form-group input::placeholder{
+
+    color:#9CA59B;
+
+}
+
+.form-group input:hover{
+
+    background:#ffffff;
+
+    border-color:rgba(119,136,115,.15);
+
+}
+
+.form-group input:focus{
+
+    background:#ffffff;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 5px rgba(119,136,115,.15);
+
+}
+
+
+/*==========================================================
+    REMOVE NUMBER ARROWS
+==========================================================*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+
+    -webkit-appearance:none;
+
+    margin:0;
+
+}
+
+input[type=number]{
+
+    -moz-appearance:textfield;
+
+}
+
+
+/*==========================================================
+    FLOATING LABEL SUPPORT
+==========================================================*/
+
+.form-group.floating{
+
+    position:relative;
+
+}
+
+.form-group.floating label{
+
+    position:absolute;
+
+    left:18px;
+
+    top:18px;
+
+    padding:0 6px;
+
+    background:#fff;
+
+    color:var(--text-light);
+
+    transition:.25s;
+
+    pointer-events:none;
+
+}
+
+.form-group.floating input:focus+label,
+.form-group.floating input:not(:placeholder-shown)+label{
+
+    top:-11px;
+
+    left:14px;
+
+    font-size:12px;
+
+    color:var(--primary);
+
+}
+
+
+/*==========================================================
+    ERROR
+==========================================================*/
+
+.error{
+
+    min-height:18px;
+
+    margin-top:8px;
+
+    font-size:13px;
+
+    color:#e74c3c;
+
+    font-weight:500;
+
+}
+
+
+/*==========================================================
+    INPUT ERROR
+==========================================================*/
+
+.form-group.error input{
+
+    border-color:#e74c3c;
+
+    background:#fff7f7;
+
+}
+
+.form-group.error input:focus{
+
+    box-shadow:0 0 0 5px rgba(231,76,60,.15);
+
+}
+
+.form-group.success input{
+
+    border-color:#2ecc71;
+
+}
+
+
+/*==========================================================
+    BUTTON GROUP
+==========================================================*/
+
+.button-group{
+
+    display:flex;
+
+    gap:18px;
+
+    margin-top:12px;
+
+}
+
+.button-group .btn{
+
+    flex:1;
+
+    height:58px;
+
+    border:none;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+
+/*==========================================================
+    PRIMARY BUTTON
+==========================================================*/
+
+.primary-btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.primary-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:0;
+
+    height:100%;
+
+    left:0;
+
+    top:0;
+
+    background:rgba(255,255,255,.12);
+
+    transition:.45s;
+
+}
+
+.primary-btn:hover::before{
+
+    width:100%;
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.primary-btn:active{
+
+    transform:scale(.98);
+
+}
+
+
+/*==========================================================
+    SECONDARY BUTTON
+==========================================================*/
+
+.secondary-btn{
+
+    background:#ffffff;
+
+    border:1px solid rgba(119,136,115,.15);
+
+}
+
+.secondary-btn:hover{
+
+    border-color:var(--primary);
+
+    background:#FAF8F4;
+
+}
+
+.secondary-btn:active{
+
+    transform:scale(.98);
+
+}
+
+
+/*==========================================================
+    BUTTON ICON
+==========================================================*/
+
+.btn i{
+
+    transition:.30s;
+
+}
+
+.btn:hover i{
+
+    transform:translateX(4px);
+
+}
+
+
+/*==========================================================
+    DISABLED BUTTON
+==========================================================*/
+
+.btn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+/*==========================================================
+    INPUT ICON SUPPORT
+==========================================================*/
+
+.input-icon{
+
+    position:absolute;
+
+    right:18px;
+
+    top:46px;
+
+    color:var(--primary-light);
+
+}
+
+
+/*==========================================================
+    REQUIRED STAR
+==========================================================*/
+
+.required{
+
+    color:#e74c3c;
+
+    margin-left:4px;
+
+}
+
+
+/*==========================================================
+    PLACEHOLDER
+==========================================================*/
+
+input:focus::placeholder{
+
+    opacity:.4;
+
+}
+
+
+/*==========================================================
+    INPUT ANIMATION
+==========================================================*/
+
+.form-group{
+
+    animation:fadeInput .5s ease both;
+
+}
+
+.form-group:nth-child(1){animation-delay:.05s;}
+.form-group:nth-child(2){animation-delay:.10s;}
+.form-group:nth-child(3){animation-delay:.15s;}
+.form-group:nth-child(4){animation-delay:.20s;}
+.form-group:nth-child(5){animation-delay:.25s;}
+.form-group:nth-child(6){animation-delay:.30s;}
+.form-group:nth-child(7){animation-delay:.35s;}
+.form-group:nth-child(8){animation-delay:.40s;}
+
+@keyframes fadeInput{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* test */
+/*==========================================================
+    RESULT CARD
+==========================================================*/
+
+.bill-result{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    animation:fadeResult .45s ease;
+
+}
+
+
+/*==========================================================
+    RESULT ROW
+==========================================================*/
+
+.result-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 20px;
+
+    border-radius:16px;
+
+    background:#FAF8F4;
+
+    transition:all .3s ease;
+
+    border:1px solid transparent;
+
+}
+
+.result-row:hover{
+
+    background:#fff;
+
+    border-color:rgba(119,136,115,.15);
+
+    transform:translateX(4px);
+
+}
+
+.result-row span{
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+}
+
+.result-row strong{
+
+    color:var(--text);
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+
+/*==========================================================
+    TOTAL ROW
+==========================================================*/
+
+.result-row.total{
+
+    margin-top:15px;
+
+    padding:24px;
+
+    background:linear-gradient(
+        135deg,
+        #778873,
+        #A1BC98
+    );
+
+    border:none;
+
+    color:#fff;
+
+    box-shadow:0 20px 45px rgba(119,136,115,.25);
+
+}
+
+.result-row.total span{
+
+    color:#fff;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+.result-row.total strong{
+
+    color:#fff;
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+
+/*==========================================================
+    RESULT DIVIDER
+==========================================================*/
+
+.result-row:not(.total)::after{
+
+    content:"";
+
+    position:absolute;
+
+    display:none;
+
+}
+
+
+/*==========================================================
+    EMPTY STATE
+==========================================================*/
+
+.empty-state{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:80px 20px;
+
+}
+
+.empty-state i{
+
+    width:90px;
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:rgba(119,136,115,.12);
+
+    color:var(--primary);
+
+    font-size:34px;
+
+    margin-bottom:25px;
+
+}
+
+.empty-state h3{
+
+    margin-bottom:12px;
+
+    font-size:24px;
+
+    color:var(--text);
+
+}
+
+.empty-state p{
+
+    max-width:320px;
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+}
+
+
+/*==========================================================
+    SUCCESS HIGHLIGHT
+==========================================================*/
+
+.result-card.success{
+
+    border-color:rgba(119,136,115,.25);
+
+}
+
+.result-card.success::before{
+
+    height:8px;
+
+}
+
+
+/*==========================================================
+    CURRENCY
+==========================================================*/
+
+.currency{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+
+/*==========================================================
+    VALUE ANIMATION
+==========================================================*/
+
+.result-row strong{
+
+    transition:.3s;
+
+}
+
+.result-row:hover strong{
+
+    color:var(--primary);
+
+}
+
+
+/*==========================================================
+    TOTAL VALUE ANIMATION
+==========================================================*/
+
+.result-row.total:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.result-row.total:hover strong{
+
+    color:#fff;
+
+}
+
+
+/*==========================================================
+    BILL READY BADGE
+==========================================================*/
+
+.bill-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:rgba(119,136,115,.10);
+
+    color:var(--primary);
+
+    font-size:13px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+.bill-status i{
+
+    font-size:14px;
+
+}
+
+
+/*==========================================================
+    RESULT HEADER
+==========================================================*/
+
+.result-card .card-header{
+
+    margin-bottom:28px;
+
+}
+
+
+/*==========================================================
+    RESULT BODY
+==========================================================*/
+
+.result-body{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/*==========================================================
+    GLASS SHINE
+==========================================================*/
+
+.result-card{
+
+    overflow:hidden;
+
+}
+
+.result-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+
+    right:-120px;
+
+    width:240px;
+
+    height:240px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.20);
+
+    filter:blur(10px);
+
+}
+
+
+/*==========================================================
+    RESULT ANIMATION
+==========================================================*/
+
+@keyframes fadeResult{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/*==========================================================
+    BILL APPEAR
+==========================================================*/
+
+.bill-result.show{
+
+    animation:billAppear .5s ease;
+
+}
+
+@keyframes billAppear{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.95);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*==========================================================
+    NUMBER POP
+==========================================================*/
+
+.pop{
+
+    animation:numberPop .4s ease;
+
+}
+
+@keyframes numberPop{
+
+    0%{
+
+        transform:scale(.8);
+
+    }
+
+    60%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*==========================================================
+    PRINT READY
+==========================================================*/
+
+@media print{
+
+    body{
+
+        background:#fff;
+
+    }
+
+    .calculator-card{
+
+        display:none;
+
+    }
+
+    .result-card{
+
+        box-shadow:none;
+
+        border:1px solid #ddd;
+
+        width:100%;
+
+    }
+
+}
+
+/* responsive */
+/*==========================================================
+    RESPONSIVE
+==========================================================*/
+
+/* ==========================
+   Large Laptop
+========================== */
+
+@media (max-width:1200px){
+
+    .calculator-wrapper{
+
+        grid-template-columns:420px 1fr;
+
+        gap:30px;
+
+    }
+
+    .tool-hero h1{
+
+        font-size:48px;
+
+    }
+
+}
+
+
+
+/* ==========================
+   Laptop
+========================== */
+
+@media (max-width:992px){
+
+    .calculator-wrapper{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .result-card{
+
+        position:static;
+
+        min-height:auto;
+
+    }
+
+    .tool-hero{
+
+        padding:70px 0 50px;
+
+    }
+
+    .tool-hero h1{
+
+        font-size:42px;
+
+    }
+
+}
+
+
+
+/* ==========================
+   Tablet
+========================== */
+
+@media (max-width:768px){
+
+    .tool-hero{
+
+        padding:60px 0 40px;
+
+    }
+
+    .tool-hero h1{
+
+        font-size:34px;
+
+    }
+
+    .tool-hero p{
+
+        font-size:16px;
+
+    }
+
+    .calculator-card,
+    .result-card{
+
+        padding:28px;
+
+        border-radius:22px;
+
+    }
+
+    .card-header{
+
+        margin-bottom:28px;
+
+    }
+
+    .card-header h2{
+
+        font-size:24px;
+
+    }
+
+    .button-group{
+
+        flex-direction:column;
+
+    }
+
+    .button-group .btn{
+
+        width:100%;
+
+    }
+
+    .result-row{
+
+        padding:16px;
+
+    }
+
+    .result-row.total strong{
+
+        font-size:28px;
+
+    }
+
+}
+
+
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width:576px){
+
+    .calculator-section{
+
+        padding:50px 0 70px;
+
+    }
+
+    .tool-badge{
+
+        font-size:13px;
+
+        padding:10px 18px;
+
+    }
+
+    .tool-hero h1{
+
+        font-size:30px;
+
+    }
+
+    .tool-hero p{
+
+        font-size:15px;
+
+    }
+
+    .calculator-card,
+    .result-card{
+
+        padding:22px;
+
+    }
+
+    .card-header{
+
+        gap:12px;
+
+    }
+
+    .card-header i{
+
+        width:48px;
+
+        height:48px;
+
+        font-size:18px;
+
+    }
+
+    .card-header h2{
+
+        font-size:21px;
+
+    }
+
+    .form-group input{
+
+        height:54px;
+
+        font-size:15px;
+
+    }
+
+    .btn{
+
+        height:54px;
+
+        font-size:15px;
+
+    }
+
+    .result-row{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .result-row.total{
+
+        align-items:center;
+
+        text-align:center;
+
+    }
+
+    .result-row.total strong{
+
+        font-size:26px;
+
+    }
+
+}
+
+
+
+/* ==========================
+   Small Mobile
+========================== */
+
+@media (max-width:400px){
+
+    .tool-hero h1{
+
+        font-size:26px;
+
+    }
+
+    .tool-hero p{
+
+        font-size:14px;
+
+    }
+
+    .calculator-card,
+    .result-card{
+
+        padding:18px;
+
+    }
+
+    .card-header h2{
+
+        font-size:19px;
+
+    }
+
+    .result-row{
+
+        padding:14px;
+
+    }
+
+    .result-row strong{
+
+        font-size:16px;
+
+    }
+
+    .result-row.total strong{
+
+        font-size:22px;
+
+    }
+
+}
+
+
+
+/*==========================================================
+    DARK MODE (Future Ready)
+==========================================================*/
+
+body.dark-mode{
+
+    --background:#1E2523;
+
+    --white:#2B3431;
+
+    --text:#F5F5F5;
+
+    --text-light:#C8C8C8;
+
+    --border:#3A4441;
+
+}
+
+body.dark-mode{
+
+    background:var(--background);
+
+    color:var(--text);
+
+}
+
+body.dark-mode .calculator-card,
+body.dark-mode .result-card{
+
+    background:#2B3431;
+
+    border-color:#3A4441;
+
+}
+
+body.dark-mode .form-group input{
+
+    background:#37413E;
+
+    color:#fff;
+
+}
+
+body.dark-mode .form-group input::placeholder{
+
+    color:#B9B9B9;
+
+}
+
+body.dark-mode .result-row{
+
+    background:#37413E;
+
+}
+
+body.dark-mode .result-row span{
+
+    color:#DDDDDD;
+
+}
+
+body.dark-mode .tool-badge{
+
+    background:rgba(161,188,152,.15);
+
+}
+
+body.dark-mode .empty-state p{
+
+    color:#CFCFCF;
+
+}
+
+
+
+/*==========================================================
+    PRINT
+==========================================================*/
+
+@media print{
+
+    body{
+
+        background:#fff;
+
+    }
+
+    .tool-hero{
+
+        display:none;
+
+    }
+
+    .calculator-card{
+
+        display:none;
+
+    }
+
+    .result-card{
+
+        width:100%;
+
+        border:1px solid #ccc;
+
+        box-shadow:none;
+
+    }
+
+}
+
+
+
+/*==========================================================
+    REDUCED MOTION
+==========================================================*/
+
+@media (prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+

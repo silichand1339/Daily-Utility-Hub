@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ========================================= -->
+    <!-- Meta -->
+    <!-- ========================================= -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Electricity Bill Calculator | Daily Utility Hub</title>
+
+    <meta name="description"
+        content="Calculate electricity bills instantly with fixed charge, duty and GST.">
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Global CSS -->
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Page CSS -->
+
+    <link rel="stylesheet" href="css/electricity_calculator.css">
+
+</head>
+
+<body>
+<header class="header">
+
+        <div class="container">
+
+            <nav class="navbar">
+
+                <!-- Logo -->
+
+                <a href="#" class="logo">
+
+                    <!-- <img src="assets/logo.svg" alt="Daily Utility Hub Logo"> -->
+
+                    <span>Daily Utility Hub</span>
+
+                </a>
+
+                <!-- Navigation -->
+
+                <ul class="nav-links">
+
+                    <li><a class="active" href="#">Home</a></li>
+
+                    <li><a href="#">All Tools</a></li>
+
+                    <li><a href="#">About</a></li>
+
+                    <li><a href="#">Contact</a></li>
+
+                </ul>
+
+                <!-- Right -->
+
+                <div class="nav-right">
+
+                    <!-- Search -->
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input type="text" placeholder="Search tools...">
+
+                    </div>
+
+                    <!-- Theme Button -->
+
+                    <button class="theme-btn">
+
+                        <i class="fa-regular fa-sun"></i>
+
+                    </button>
+
+                    <!-- Mobile Menu -->
+
+                    <button class="menu-btn">
+
+                        <i class="fa-solid fa-bars"></i>
+
+                    </button>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+    <!-- ========================================= -->
+    <!-- PAGE HEADER -->
+    <!-- ========================================= -->
+
+    <section class="tool-hero">
+
+        <div class="container">
+
+            <div class="tool-badge">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                Electricity Bill Calculator
+
+            </div>
+
+            <h1>
+
+                Calculate Your Electricity Bill
+
+            </h1>
+
+            <p>
+
+                Calculate your electricity bill instantly using previous meter
+                reading, current reading, fixed charges, electricity duty and GST.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- ========================================= -->
+    <!-- CALCULATOR -->
+    <!-- ========================================= -->
+
+    <section class="calculator-section">
+
+        <div class="container">
+
+            <div class="calculator-wrapper">
+
+                <!-- ============================= -->
+                <!-- INPUT CARD -->
+                <!-- ============================= -->
+
+                <div class="calculator-card">
+
+                    <div class="card-header">
+
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                        <h2>Bill Details</h2>
+
+                    </div>
+
+                    <form id="billForm" novalidate>
+
+                        <!-- Customer -->
+
+                        <div class="form-group">
+
+                            <label for="customerName">
+
+                                Customer Name
+
+                                <span>(Optional)</span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerName"
+                                placeholder="Enter customer name">
+
+                        </div>
+
+
+
+                        <!-- Previous Reading -->
+
+                        <div class="form-group">
+
+                            <label for="previousReading">
+
+                                Previous Meter Reading *
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="previousReading"
+                                min="0"
+                                placeholder="Example : 2450">
+
+                            <small class="error"></small>
+
+                        </div>
+
+
+
+                        <!-- Current Reading -->
+
+                        <div class="form-group">
+
+                            <label for="currentReading">
+
+                                Current Meter Reading *
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="currentReading"
+                                min="0"
+                                placeholder="Example : 2600">
+
+                            <small class="error"></small>
+
+                        </div>
+
+
+
+                        <!-- Rate -->
+
+                        <div class="form-group">
+
+                            <label for="ratePerUnit">
+
+                                Rate Per Unit (₹) *
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="ratePerUnit"
+                                min="0"
+                                step="0.01"
+                                placeholder="Example : 7">
+
+                            <small class="error"></small>
+
+                        </div>
+
+
+
+                        <!-- Fixed Charge -->
+
+                        <div class="form-group">
+
+                            <label for="fixedCharge">
+
+                                Fixed Charge (₹) *
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="fixedCharge"
+                                min="0"
+                                step="0.01"
+                                placeholder="Example : 120">
+
+                            <small class="error"></small>
+
+                        </div>
+
+
+
+                        <!-- Duty -->
+
+                        <div class="form-group">
+
+                            <label for="duty">
+
+                                Electricity Duty (%)
+
+                                <span>(Optional)</span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="duty"
+                                min="0"
+                                step="0.01"
+                                placeholder="Example : 5">
+
+                        </div>
+
+
+
+                        <!-- GST -->
+
+                        <div class="form-group">
+
+                            <label for="gst">
+
+                                GST (%)
+
+                                <span>(Optional)</span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="gst"
+                                min="0"
+                                step="0.01"
+                                placeholder="Example : 18">
+
+                        </div>
+
+
+
+                        <!-- Buttons -->
+
+                        <div class="button-group">
+
+                            <button
+                                type="submit"
+                                class="btn primary-btn">
+
+                                <i class="fa-solid fa-calculator"></i>
+
+                                Calculate Bill
+
+                            </button>
+
+                            <button
+                                type="reset"
+                                class="btn secondary-btn"
+                                id="resetBtn">
+
+                                <i class="fa-solid fa-rotate-left"></i>
+
+                                Reset
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+
+
+
+                <!-- ============================= -->
+                <!-- RESULT CARD -->
+                <!-- ============================= -->
+
+                <div class="result-card" id="resultCard">
+
+                    <div class="card-header">
+
+                        <i class="fa-solid fa-receipt"></i>
+
+                        <h2>Bill Summary</h2>
+
+                    </div>
+                    
+
+                    <div class="result-body">
+
+                        <div class="empty-state" id="emptyState">
+
+                            <i class="fa-solid fa-lightbulb"></i>
+
+                            <h3>No Calculation Yet</h3>
+
+                            <p>
+
+                                Fill in the form and click
+
+                                <strong>Calculate Bill</strong>
+
+                                to view your electricity bill.
+
+                            </p>
+
+                        </div>
+
+
+
+                        <div
+                            class="bill-result"
+                            id="billResult"
+                            style="display:none;">
+
+                            <div class="result-row">
+
+                                <span>Customer</span>
+
+                                <strong id="customerResult">-</strong>
+
+                            </div>
+
+                            <div class="result-row">
+
+                                <span>Units Consumed</span>
+
+                                <strong id="unitsResult">0</strong>
+
+                            </div>
+
+                            <div class="result-row">
+
+                                <span>Rate Per Unit</span>
+
+                                <strong id="rateResult">₹0.00</strong>
+
+                            </div>
+
+                            <div class="result-row">
+
+                                <span>Energy Charge</span>
+
+                                <strong id="energyResult">₹0.00</strong>
+
+                            </div>
+
+                            <div class="result-row">
+
+                                <span>Fixed Charge</span>
+
+                                <strong id="fixedResult">₹0.00</strong>
+
+                            </div>
+
+                            <div class="result-row">
+
+                                <span>Electricity Duty</span>
+
+                                <strong id="dutyResult">₹0.00</strong>
+
+                            </div>
+
+                            <div class="result-row">
+
+                                <span>GST</span>
+
+                                <strong id="gstResult">₹0.00</strong>
+
+                            </div>
+
+                            <div class="result-row total">
+
+                                <span>Total Bill</span>
+
+                                <strong id="totalResult">
+
+                                    ₹0.00
+
+                                </strong>
+
+                            </div>
+                            <div class="result-actions">
+
+    <button
+        type="button"
+        class="btn primary-btn"
+        id="downloadPdf">
+
+        <i class="fa-solid fa-download"></i>
+
+        Download PDF
+
+    </button>
+
+</div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- ========================================= -->
+    <!-- JS -->
+    <!-- ========================================= -->
+     <!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-top">
+
+            <!-- Company -->
+
+            <div class="footer-column">
+
+                <a href="#" class="footer-logo" style="color: #778873; font-weight: bold;">
+
+                    <!-- <img src="assets/logo.svg" alt="Daily Utility Hub Logo"> -->
+
+                    <span>Daily Utility Hub</span>
+
+                </a>
+
+                <p class="footer-about">
+
+                    Daily Utility Hub provides free, fast and beginner-friendly
+                    online tools that help students, developers and everyday
+                    users complete daily tasks quickly.
+
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+
+            <div class="footer-column">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+
+                    <li><a href="#">Home</a></li>
+
+                    <li><a href="#">All Tools</a></li>
+
+                    <li><a href="#">Categories</a></li>
+
+                    <li><a href="#">About</a></li>
+
+                    <li><a href="#">Contact</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- Popular Tools -->
+
+            <div class="footer-column">
+
+                <h3>Popular Tools</h3>
+
+                <ul>
+
+                    <li><a href="#">Temperature Converter</a></li>
+
+                    <li><a href="#">Salary Calculator</a></li>
+
+                    <li><a href="#">Employee Directory</a></li>
+
+                    <li><a href="#">ATM Simulator</a></li>
+
+                    <li><a href="#">Library Manager</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- Contact -->
+
+            <div class="footer-column">
+
+                <h3>Contact</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="mailto:hello@dailyutilityhub.com">
+                            hello@dailyutilityhub.com
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Odisha, India
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Privacy Policy
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Terms & Conditions
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom -->
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 Daily Utility Hub. All Rights Reserved.
+
+            </p>
+
+            <div class="social-links">
+
+                <a href="#" aria-label="Facebook">
+
+                    <i class="fab fa-facebook-f"></i>
+
+                </a>
+
+                <a href="#" aria-label="Instagram">
+
+                    <i class="fab fa-instagram"></i>
+
+                </a>
+
+                <a href="#" aria-label="LinkedIn">
+
+                    <i class="fab fa-linkedin-in"></i>
+
+                </a>
+
+                <a href="#" aria-label="GitHub">
+
+                    <i class="fab fa-github"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ===================================================== -->
+<!-- SCROLL TO TOP -->
+<!-- ===================================================== -->
+
+<button class="scroll-top" id="scrollTop">
+
+    <i class="fas fa-arrow-up"></i>
+
+</button>
+
+    <!-- ================= JS ================= -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script src="js/script.js"></script>
+
+    <script src="js/electricity_calculator.js"></script>
+
+</body>
+
+</html>
